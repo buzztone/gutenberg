@@ -11,6 +11,7 @@ import {
 } from '@wordpress/block-editor';
 import { TextControl, SelectControl, PanelBody } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+// import { useInstanceId } from '@wordpress/compose';
 
 /**
  * Internal dependencies
@@ -19,6 +20,9 @@ import {
 	formSubmissionNotificationSuccess,
 	formSubmissionNotificationError,
 } from './utils.js';
+
+// Use local useInstanceId
+import { default as useInstanceId } from './components/useInstanceId';
 
 const TEMPLATE = [
 	formSubmissionNotificationSuccess,
@@ -51,8 +55,25 @@ const TEMPLATE = [
 ];
 
 const Edit = ( { attributes, setAttributes, clientId } ) => {
-	const { action, method, email, submissionMethod } = attributes;
-	const blockProps = useBlockProps();
+	const { action, method, email, submissionMethod, formId } = attributes;
+
+	// Use useInstanceId to generate a unique form id
+	const instanceId = useInstanceId( Edit, 'wpf' );
+	// console.log('Current formId:', formId);
+	// console.log('Generated instanceId:', instanceId);
+
+	// Use existing formId if available, otherwise add unique formId to attributes
+	// if ( ! formId ) {
+		setAttributes( { 
+			formId: instanceId,
+			action: ''
+		} );
+		// console.log('After setAttributes - formId:', instanceId);
+	//}
+
+	const blockProps = useBlockProps({
+		id: formId
+	});
 
 	const { hasInnerBlocks } = useSelect(
 		( select ) => {
