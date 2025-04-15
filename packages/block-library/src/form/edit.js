@@ -58,21 +58,15 @@ const Edit = ( { attributes, setAttributes, clientId } ) => {
 
 	// Use useInstanceId to generate a unique form id
 	const instanceId = useInstanceId( Edit, 'wpf' );
-	// console.log('Current formId:', formId);
-	// console.log('Generated instanceId:', instanceId);
-
-	// Use existing formId if available, otherwise add unique formId to attributes
-	// if ( ! formId ) {
-		setAttributes( { 
+	
+		setAttributes( {
 			formId: instanceId,
 			action: ''
 		} );
-		// console.log('After setAttributes - formId:', instanceId);
-	//}
 
-	const blockProps = useBlockProps({
+	const blockProps = useBlockProps( {
 		id: formId
-	});
+	} );
 
 	const { hasInnerBlocks } = useSelect(
 		( select ) => {
