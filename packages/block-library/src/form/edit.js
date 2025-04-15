@@ -11,7 +11,6 @@ import {
 } from '@wordpress/block-editor';
 import { TextControl, SelectControl, PanelBody } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-// import { useInstanceId } from '@wordpress/compose';
 
 /**
  * Internal dependencies

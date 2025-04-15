@@ -51,6 +51,7 @@ function createId( object: object, format?: string ): string | number {
  * 3. When preferredId is given, the returned value is the type of preferredId
  *
  * @param object Object reference to create an id for.
+ */
 
 function useInstanceId( object: object ): number;
 function useInstanceId( object: object, prefix: string ): string;
@@ -59,8 +60,6 @@ function useInstanceId< T extends string | number >(
 	prefix: string,
 	preferredId?: T
 ): T;
-
-TypeScript Function Overloading disabled */
 
 /**
  * Provides a unique instance ID.
