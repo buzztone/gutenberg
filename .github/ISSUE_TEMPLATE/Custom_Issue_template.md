@@ -1,7 +1,9 @@
 ---
 name: Custom Issue Template
 about: Prepare PR on fork
+title: "[Custom] "
 labels: "[Type] Custom"
+assignees: ''
 ---
 
 ## What?
