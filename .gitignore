@@ -10,6 +10,9 @@ coverage
 .phpunit.result.cache
 .reassure
 
+# Custom
+.github/ISSUE_TEMPLATE/Custom_Issue_template.md
+gutenberg.php
 
 # Directories/files that may appear in your environment
 *.log
